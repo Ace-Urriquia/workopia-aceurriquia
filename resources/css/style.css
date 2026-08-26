@@ -1,0 +1,10 @@
+#map{
+    width: 100%;
+    height: 400px;
+    z-index: 1;
+}
+
+#appicant-form{
+    position: relative;
+    z-index: 2;
+}
