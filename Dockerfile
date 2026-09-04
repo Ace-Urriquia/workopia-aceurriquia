@@ -1,7 +1,3 @@
-# =========================
-# STAGE 1: BUILD FRONTEND
-# =========================
-
 FROM node:22 AS frontend
 
 WORKDIR /app
@@ -15,10 +11,6 @@ COPY . .
 RUN npm run build
 
 
-# =========================
-# STAGE 2: RUN LARAVEL
-# =========================
-
 FROM richarvey/nginx-php-fpm:3.1.6
 
 WORKDIR /var/www/html
@@ -31,7 +23,7 @@ RUN composer install --no-dev --optimize-autoloader --no-interaction
 COPY --from=frontend /app/public/build ./public/build
 
 ENV WEBROOT=/var/www/html/public
-ENV PHP_ERRORS_STDERR=1
+ENV PHP_DISPLAY_ERRORS=1
 ENV RUN_SCRIPTS=1
 ENV REAL_IP_HEADER=1
 ENV APP_ENV=production
