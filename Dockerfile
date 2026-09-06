@@ -22,6 +22,7 @@ RUN composer install --no-dev --optimize-autoloader --no-interaction
 COPY --from=frontend /app/public/build/ /var/www/html/public/build/
 
 RUN ls -la /var/www/html/public/build/ && ls -la /var/www/html/public/build/assets/
+
 ENV WEBROOT=/var/www/html/public
 ENV PHP_ERRORS_STDERR=1
 ENV RUN_SCRIPTS=1
