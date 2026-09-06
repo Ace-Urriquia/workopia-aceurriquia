@@ -19,11 +19,11 @@ COPY . .
 
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
-# Copy the Vite build files
-COPY --from=frontend /app/public/build ./public/build
+COPY --from=frontend /app/public/build/ /var/www/html/public/build/
 
+RUN ls -la /var/www/html/public/build/ && ls -la /var/www/html/public/build/assets/
 ENV WEBROOT=/var/www/html/public
-ENV PHP_DISPLAY_ERRORS=1
+ENV PHP_ERRORS_STDERR=1
 ENV RUN_SCRIPTS=1
 ENV REAL_IP_HEADER=1
 ENV APP_ENV=production
