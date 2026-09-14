@@ -6,11 +6,32 @@
         Profile Info
     </h3>
 
-    @if($user->avatar)
+   @if($user->avatar)
     <div class="mt-2 flex justify-center">
-        <img src="{{asset('storage/'. $user->avatar)}}" alt="{{$user->name}}" class="w-32 h-32 object-cover rounded-full">
+        <img
+            src="{{ asset('storage/' . $user->avatar) }}"
+            alt="{{ $user->name }}"
+            class="w-32 h-32 object-cover rounded-full"
+        >
     </div>
-    @endif
+@else
+    <div class="mt-2 flex justify-center">
+        <div class="w-32 h-32 rounded-full bg-gray-300 flex items-center justify-center">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="w-20 h-20 text-gray-600"
+            >
+                <path
+                    fill-rule="evenodd"
+                    d="M12 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10ZM4 21a8 8 0 1 1 16 0H4Z"
+                    clip-rule="evenodd"
+                />
+            </svg>
+        </div>
+    </div>
+@endif
     <form method="POST" action="{{route('profile.update')}}" enctype="multipart/form-data">
     
         @csrf

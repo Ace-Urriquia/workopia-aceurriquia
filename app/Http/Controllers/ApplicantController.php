@@ -8,8 +8,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\Applicant;
 use App\Models\Job;
-use App\Mail\JobApplied;
-use Illuminate\Support\Facades\Mail;
+//use App\Mail\JobApplied;
+//use Illuminate\Support\Facades\Mail;
 
 
 class ApplicantController extends Controller
@@ -56,7 +56,7 @@ class ApplicantController extends Controller
     $application->save();
 
     // Send Email to owner
-    Mail::to($job->user->email)->send(new JobApplied($application, $job));
+    // Mail::to($job->user->email)->send(new JobApplied($application, $job));
 
     return redirect()->back()->with('success','Your application has been submitted');
     }
