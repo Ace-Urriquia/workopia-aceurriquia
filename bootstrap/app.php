@@ -12,12 +12,14 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        $middleware->validateCsrfTokens(except:[
-            '/submit'
-        ]);
 
-      //  $middleware->append(LogRequest::class);
-    })
+    $middleware->trustProxies(at: '*');
+
+    $middleware->validateCsrfTokens(except: [
+        '/submit'
+    ]);
+
+})
     ->withExceptions(function (Exceptions $exceptions): void {
         //
     })->create();
