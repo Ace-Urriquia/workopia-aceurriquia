@@ -45,4 +45,4 @@ ENV LOG_CHANNEL=stderr
 
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
-CMD ["/bin/sh", "-c", "php artisan storage:link && mkdir -p storage/app/public/logos && cp -f public/images/logos/* storage/app/public/logos/ && php artisan migrate --force && /start.sh"]
+CMD ["/bin/sh", "-c", "php artisan storage:link && mkdir -p storage/app/public/logos storage/app/public/avatars && cp -f public/images/logos/* storage/app/public/logos/ && cp -f public/images/avatars/default-avatar.png storage/app/public/avatars/default-avatar.png && php artisan migrate --force && /start.sh"]
